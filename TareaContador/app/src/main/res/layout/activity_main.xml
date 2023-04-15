@@ -4,36 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#11597A"
+    android:background="#032D40"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textV"
-        android:layout_width="108dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="52dp"
-        android:background="#F6F0F0"
-        android:onClick="btnClick"
-        android:text="Click aquí"
-        android:textColor="#3F51B5"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
         android:id="@+id/textView2"
-        android:layout_width="221dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="140dp"
-        android:text="Contador"
+        android:layout_width="385dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="48dp"
+        android:background="#133D50"
+        android:gravity="center"
+        android:text="Contador de clics"
         android:textColor="#EFEFF3"
-        android:textSize="48sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textV"
+        android:layout_width="178dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="#4CAF50"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="btnClick"
+        android:rotationX="0"
+        android:rotationY="0"
+        android:text="Haga clic aqui para acumular sus clicks, cada clic se suma al anterior"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.335" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
