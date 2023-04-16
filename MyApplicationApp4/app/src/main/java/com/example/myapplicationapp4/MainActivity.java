@@ -10,38 +10,39 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private int mCount = 0; // Contador inicializado en 0
+    private TextView mShowCount; // TextView para mostrar el contador
+
+    private static final String COUNT_KEY = "count"; // Clave para almacenar el contador en el Bundle
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // Método que se llama cuando se crea la actividad
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // Establece el diseño de la actividad
 
-        Button loginbutton = findViewById(R.id.btn);
-        loginbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        mShowCount = (TextView) findViewById(R.id.show_count); // Obtiene una referencia al TextView
 
-                EditText userEditText = findViewById(R.id.user);
-                EditText passwordEditText = findViewById(R.id.contrasenia);
-                String user1 = userEditText.getText().toString();
-                String pass1 = passwordEditText.getText().toString();
+        if (savedInstanceState != null) { // Comprueba si hay datos guardados
+            mCount = savedInstanceState.getInt(COUNT_KEY); // Recupera el valor del contador guardado
+            mShowCount.setText(String.valueOf(mCount)); // Actualiza el TextView con el valor del contador
+        }
+    }
 
-                if(user1.equals("asd") && pass1.equals("asd")){
-                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+    public void countUp(View view) { // Método que se llama cuando se hace clic en el botón
+        mCount++; // Incrementa el contador
+        mShowCount.setText(String.valueOf(mCount)); // Actualiza el TextView con el valor del contador
+    }
 
-                    Bundle usuario = new Bundle();
+    @Override
+    public void onSaveInstanceState(Bundle outState) { // Método que se llama antes de que la actividad sea destruida
+        super.onSaveInstanceState(outState);
+        outState.putInt(COUNT_KEY, mCount); // Guarda el valor del contador en el Bundle
+    }
 
-                    usuario.putString("usr", user1);
-
-                    intent.putExtras(usuario);
-
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Usuario o contrasenia incorrectos", Toast.LENGTH_SHORT).show();;
-                }
-
-            }
-        });
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) { // Método que se llama después de que la actividad sea recreada
+        super.onRestoreInstanceState(savedInstanceState);
+        mCount = savedInstanceState.getInt(COUNT_KEY); // Recupera el valor del contador guardado
+        mShowCount.setText(String.valueOf(mCount)); // Actualiza el TextView con el valor del contador
     }
 }
